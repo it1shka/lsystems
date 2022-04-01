@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { RootDispatch, RootState } from '../store'
 import { setAngle, setAxiom, setColor, setIters, setRules, setStep } from '../store/actions'
-import StartButton from './StartButton'
+import StartButton from './Buttons'
 
 const SidePanel = () => {
   const dispatch = useDispatch<RootDispatch>()
