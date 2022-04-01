@@ -1,4 +1,4 @@
-interface Preset {
+export interface Preset {
   name: string
   axiom: string
   angle: string
@@ -38,7 +38,7 @@ const presets: Preset[] = [
     angle: '30',
     iterations: '4',
     rules: 'X -> F[+X]F[-X]+X; F -> FF',
-    step: '7'
+    step: '12'
   },
   {
     name: 'Maple',

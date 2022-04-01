@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import presets, { Preset } from '../presets'
 import { RootDispatch, RootState } from '../store'
 import { setAngle, setAxiom, setColor, setIters, setRules, setStep } from '../store/actions'
 import StartButton from './Buttons'
@@ -57,8 +58,32 @@ const SidePanel = () => {
     dispatch(setColor(value))
   }
 
+  const setPreset = ({axiom,angle,iterations,rules,step}: Preset) => {
+    dispatch(setAxiom(axiom))
+    dispatch(setAngle(angle))
+    dispatch(setIters(iterations))
+    dispatch(setRules(rules))
+    dispatch(setStep(step))
+  }
+
   return (
     <SidePanelContainer>
+      <div>
+        <h3>Preset:</h3>
+        <Select>
+          <option>No preset</option>
+          {presets.map((preset, idx) => {
+            return (
+              <option 
+                onClick={() => setPreset(preset)}
+                key={idx}
+              >
+                {preset.name}
+              </option>
+            )
+          })}
+        </Select>
+      </div> 
       <div>
         <h3>Axiom:</h3>
         <Input
@@ -113,7 +138,7 @@ const SidePanel = () => {
   )
 }
 
-const Input = styled.input`
+const BaseCSS = css`
   border: none;
   outline: none;
   box-shadow: #ccc 0px 0px 3px;
@@ -122,6 +147,14 @@ const Input = styled.input`
   font-size: 0.9em;
   margin-top: 0.2em;
   width: 100%;
+`
+
+const Select = styled.select`
+  ${BaseCSS}
+`
+
+const Input = styled.input`
+  ${BaseCSS}
 `
 
 const SidePanelContainer = styled.div`

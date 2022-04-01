@@ -7,7 +7,7 @@ const defaultAppState: AppState = {
   rules: 'X -> F[+X][-X]FX; F -> FF',
   canvas: null,
 
-  step: '3',
+  step: '2',
   color: '#000',
 }
 
